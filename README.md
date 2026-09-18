@@ -47,3 +47,10 @@ aws-student-community-day/
 │
 ├── index.html
 └── README.md
+
+
+Author
+
+Tulsi Kumari
+
+B.Tech AI/ML Student at IGDTUW
