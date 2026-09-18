@@ -1,0 +1,3656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AWS Student Community Day | Learn • Build • Connect</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --navy:#061426;
+  --navy2:#0a1d34;
+  --blue:#6ea8ff;
+  --orange:#ff9900;
+  --purple:#7657ff;
+  --white:#f8fbff;
+  --muted:#91a4bb;
+  --line:rgba(255,255,255,.10);
+  --shadow:0 25px 70px rgba(0,0,0,.30);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:#f7f9fc;
+  color:#10233a;
+  font-family:Inter,Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:100;
+  background:rgba(5,17,32,.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.navin{
+  height:72px;
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+
+.logo{
+  font-weight:900;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  white-space:nowrap;
+}
+
+.logoMark{
+  color:#fff;
+  font-size:22px;
+}
+
+.logoMark:after{
+  content:"";
+  display:inline-block;
+  width:27px;
+  height:8px;
+  border-bottom:3px solid var(--orange);
+  border-radius:50%;
+  margin-left:-25px;
+  transform:translateY(7px);
+}
+
+.links{
+  display:flex;
+  gap:22px;
+  margin-left:auto;
+}
+
+.links a{
+  font-size:12px;
+  color:#c3d0df;
+  position:relative;
+}
+
+.links a:hover{
+  color:#fff;
+}
+
+.links a:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0;
+  height:2px;
+  background:var(--orange);
+  transition:.25s;
+}
+
+.links a:hover:after{
+  width:100%;
+}
+
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:12px 18px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.25s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.btn:hover{
+  transform:translateY(-3px) scale(1.01);
+}
+
+.orange{
+  background:var(--orange);
+  color:#111;
+  box-shadow:0 12px 28px rgba(255,153,0,.25);
+}
+
+.outline{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+}
+
+.menu{
+  display:none;
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:25px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:730px;
+  padding-top:115px;
+  padding-bottom:60px;
+
+  background:
+    radial-gradient(
+      circle at 74% 30%,
+      rgba(91,129,255,.22),
+      transparent 25rem
+    ),
+    radial-gradient(
+      circle at 25% 15%,
+      rgba(255,153,0,.08),
+      transparent 22rem
+    ),
+    var(--navy);
+
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
+
+  background-size:50px 50px;
+}
+
+.heroGrid{
+  position:relative;
+  z-index:2;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:35px;
+}
+
+.kicker{
+  font-size:12px;
+  color:var(--orange);
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:clamp(46px,6vw,76px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  margin:17px 0;
+}
+
+.hero h1 span{
+  color:#709dff;
+}
+
+.hero p{
+  max-width:610px;
+  color:#a9b9cb;
+  line-height:1.7;
+  font-size:16px;
+}
+
+.heroActions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:28px 0;
+}
+
+.facts{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+
+.fact{
+  padding:8px 11px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  border-radius:99px;
+  font-size:11px;
+  color:#d2dce7;
+}
+
+.heroPhoto{
+  height:440px;
+  border-radius:28px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:var(--shadow);
+  position:relative;
+  transform:rotate(1.5deg);
+  transition:.5s;
+}
+
+.heroPhoto:hover{
+  transform:rotate(0) scale(1.02);
+}
+
+.heroPhoto img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.heroPhoto:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    0deg,
+    rgba(4,15,28,.75),
+    transparent 60%
+  );
+}
+
+.sticker{
+  position:absolute;
+  z-index:4;
+  padding:12px 15px;
+  background:#fff;
+  color:#12243a;
+  font-weight:900;
+  border-radius:12px;
+  box-shadow:0 14px 35px #0005;
+  transform:rotate(-7deg);
+  animation:float 4s ease-in-out infinite;
+}
+
+.s1{
+  top:30px;
+  right:-8px;
+}
+
+.s2{
+  bottom:35px;
+  left:-12px;
+  transform:rotate(5deg);
+  animation-delay:1s;
+}
+
+@keyframes float{
+  50%{
+    transform:translateY(-9px) rotate(-5deg);
+  }
+}
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+section{
+  padding:88px 0;
+}
+
+.light{
+  background:#f7f9fc;
+}
+
+.dark{
+  background:var(--navy);
+  color:#fff;
+}
+
+.head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:25px;
+  margin-bottom:30px;
+}
+
+.eyebrow{
+  color:#ff9900;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.head h2{
+  font-size:39px;
+  letter-spacing:-.04em;
+  margin:7px 0;
+}
+
+.head p{
+  max-width:550px;
+  color:#72859a;
+  line-height:1.6;
+  margin:0;
+}
+
+.dark .head p{
+  color:#91a4bb;
+}
+
+/* =========================================================
+   PERSONAS
+========================================================= */
+
+.personas{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
+}
+
+.persona{
+  padding:25px;
+  border:1px solid #e2e9f1;
+  border-radius:20px;
+  background:#fff;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition:.35s;
+}
+
+.persona:before{
+  content:"";
+  position:absolute;
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:#edf4ff;
+  right:-30px;
+  top:-35px;
+  transition:.4s;
+}
+
+.persona:hover{
+  transform:translateY(-9px) skewY(-1deg);
+  box-shadow:0 22px 50px rgba(31,59,94,.12);
+  border-color:#b9d0ec;
+}
+
+.persona:hover:before{
+  transform:scale(2.2);
+}
+
+.persona>*{
+  position:relative;
+}
+
+.emoji{
+  font-size:27px;
+}
+
+.persona h3{
+  margin:15px 0 7px;
+}
+
+.persona p{
+  color:#718399;
+  line-height:1.55;
+  font-size:13px;
+}
+
+.persona a{
+  font-size:12px;
+  font-weight:800;
+  color:#3568d4;
+}
+
+/* =========================================================
+   INTERACTIVE SESSIONS
+========================================================= */
+
+.sessionArea{
+  background:linear-gradient(135deg,#071a31,#0c2440);
+  border-radius:28px;
+  padding:24px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:var(--shadow);
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  margin-bottom:15px;
+}
+
+.tab{
+  border:1px solid var(--line);
+  background:transparent;
+  color:#9eb0c4;
+  padding:9px 14px;
+  border-radius:99px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.tab.active{
+  background:#fff;
+  color:#12243a;
+  border-color:#fff;
+  font-weight:800;
+}
+
+.sessionGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+}
+
+.session{
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:17px;
+  overflow:hidden;
+  transition:.35s;
+  position:relative;
+}
+
+.session:hover{
+  transform:translateY(-8px) rotate(.8deg) skewY(-1deg);
+  border-color:rgba(110,168,255,.55);
+  box-shadow:0 20px 40px #0005;
+}
+
+.sessionImg{
+  height:125px;
+  overflow:hidden;
+}
+
+.sessionImg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.45s;
+}
+
+.session:hover .sessionImg img{
+  transform:scale(1.08);
+}
+
+.sessionBody{
+  padding:14px;
+}
+
+.tag{
+  font-size:9px;
+  padding:5px 7px;
+  background:rgba(110,168,255,.14);
+  color:#9cc8ff;
+  border-radius:6px;
+  font-weight:900;
+}
+
+.session h3{
+  font-size:14px;
+  margin:10px 0 5px;
+  color:#fff;
+}
+
+.session p{
+  font-size:11px;
+  color:#8fa3ba;
+  line-height:1.5;
+  min-height:34px;
+}
+
+.sessionFoot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#a8bad0;
+  font-size:10px;
+}
+
+.save{
+  border:1px solid var(--line);
+  background:transparent;
+  color:#fff;
+  border-radius:8px;
+  padding:7px 9px;
+  cursor:pointer;
+}
+
+.save.saved{
+  background:#72e6b4;
+  color:#082018;
+  border-color:#72e6b4;
+}
+
+/* =========================================================
+   SPEAKERS
+========================================================= */
+
+.speakers{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.speaker{
+  background:#fff;
+  border:1px solid #e3e9f0;
+  border-radius:19px;
+  padding:17px;
+  cursor:pointer;
+  transition:.35s;
+}
+
+.speaker:hover{
+  transform:translateY(-7px) rotate(-1deg);
+  box-shadow:0 22px 50px rgba(31,59,94,.13);
+}
+
+.speakerImg{
+  height:170px;
+  border-radius:13px;
+  overflow:hidden;
+  background:#dce7f4;
+}
+
+.speakerImg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.85);
+  transition:.4s;
+}
+
+.speaker:hover img{
+  transform:scale(1.06);
+  filter:saturate(1);
+}
+
+.speaker h3{
+  margin:13px 0 4px;
+  font-size:15px;
+}
+
+.speaker p{
+  margin:0;
+  color:#718399;
+  font-size:11px;
+}
+
+/* =========================================================
+   SCHEDULE + VENUE
+========================================================= */
+
+.two{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:20px;
+}
+
+.panel{
+  background:#fff;
+  border:1px solid #e3e9f0;
+  border-radius:23px;
+  padding:24px;
+  overflow:hidden;
+}
+
+.timeline{
+  display:grid;
+  gap:0;
+}
+
+.line{
+  display:grid;
+  grid-template-columns:65px 1fr;
+  gap:15px;
+  position:relative;
+  padding:14px 0;
+}
+
+.line:not(:last-child):after{
+  content:"";
+  position:absolute;
+  left:67px;
+  top:34px;
+  bottom:-3px;
+  border-left:1px dashed #cbd7e5;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  background:#4f79e8;
+  border-radius:50%;
+  position:absolute;
+  left:63px;
+  top:19px;
+  z-index:2;
+  box-shadow:0 0 0 4px #eaf0ff;
+}
+
+.line time{
+  font-size:11px;
+  font-weight:900;
+  color:#5276c7;
+}
+
+.line div{
+  padding-left:20px;
+}
+
+.line strong{
+  font-size:13px;
+}
+
+.line span{
+  display:block;
+  color:#8292a4;
+  font-size:11px;
+  margin-top:4px;
+}
+
+.venueImg{
+  height:230px;
+  border-radius:15px;
+  overflow:hidden;
+  margin-top:15px;
+}
+
+.venueImg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.mapFake{
+  height:80px;
+  border-radius:13px;
+  margin-top:12px;
+  background:
+    linear-gradient(
+      20deg,
+      #e6edf3 25%,
+      #f9fbfc 25% 45%,
+      #e6edf3 45% 47%,
+      #f9fbfc 47% 70%,
+      #dce7df 70%
+    );
+  position:relative;
+}
+
+.pin{
+  position:absolute;
+  left:54%;
+  top:38%;
+  font-size:28px;
+}
+
+/* =========================================================
+   SPONSORS
+========================================================= */
+
+.sponsorSection{
+  background:#f4f7fb;
+  position:relative;
+  overflow:hidden;
+}
+
+.sponsorGrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+  margin-top:10px;
+  max-width:900px;
+}
+
+.sponsorCard{
+  background:#fff;
+  border:1px solid #dfe7ef;
+  border-radius:22px;
+  min-height:155px;
+  padding:24px;
+
+  display:grid;
+  grid-template-columns:72px 1fr 24px;
+  align-items:center;
+  gap:18px;
+
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+.sponsorCard:before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  right:-100px;
+  bottom:-100px;
+  border-radius:50%;
+  background:#edf3ff;
+  transition:.5s;
+}
+
+.sponsorCard:hover{
+  transform:translateY(-10px) rotate(-1deg) skewX(-1deg);
+  box-shadow:0 25px 55px rgba(20,45,75,.15);
+  border-color:#b9cce3;
+}
+
+.sponsorCard:hover:before{
+  transform:scale(1.8);
+}
+
+.sponsorCard>*{
+  position:relative;
+  z-index:2;
+}
+
+.sponsorCard.featured{
+  border-color:rgba(255,153,0,.5);
+  box-shadow:0 8px 30px rgba(255,153,0,.08);
+}
+
+.konfhubCard{
+  border-color:rgba(42,102,210,.25);
+}
+
+/* Sponsor logo container */
+
+.sLogo{
+  width:72px;
+  height:72px;
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+  background:#f7f9fc;
+  flex-shrink:0;
+}
+
+.awsLogo{
+  background:#fff7e8;
+}
+
+.awsLogo img{
+  width:60px;
+  height:auto;
+  object-fit:contain;
+}
+
+.konfhubLogo{
+  background:linear-gradient(
+    135deg,
+    #eef5ff,
+    #dceaff
+  );
+}
+
+.konfIcon{
+  width:48px;
+  height:48px;
+  border-radius:13px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#1667d9;
+  color:#fff;
+
+  font-size:26px;
+  font-weight:900;
+  font-family:Arial,sans-serif;
+
+  box-shadow:0 8px 18px rgba(22,103,217,.25);
+}
+
+.sponsorContent strong{
+  display:block;
+  font-size:17px;
+  color:#17263a;
+  margin-top:7px;
+}
+
+.sponsorContent small{
+  display:block;
+  color:#8191a3;
+  font-size:10px;
+  margin-top:6px;
+}
+
+.sponsorTag{
+  display:inline-block;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.12em;
+  padding:5px 8px;
+  border-radius:99px;
+}
+
+.titleTag{
+  color:#9a5b00;
+  background:#fff1d7;
+  border:1px solid #ffd38b;
+}
+
+.ticketTag{
+  color:#1557a8;
+  background:#e9f2ff;
+  border:1px solid #bcd7ff;
+}
+
+.sponsorCard>b{
+  color:#71869f;
+  font-size:18px;
+  transition:.3s;
+}
+
+.sponsorCard:hover>b{
+  color:#1667d9;
+  transform:translate(4px,-4px);
+}
+
+/* =========================================================
+   TEAM
+========================================================= */
+
+.team{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.member{
+  background:rgba(255,255,255,.055);
+  border:1px solid var(--line);
+  padding:20px;
+  border-radius:18px;
+  text-align:center;
+  transition:.3s;
+}
+
+.member:hover{
+  transform:translateY(-7px) skewX(-1deg);
+  background:rgba(255,255,255,.08);
+}
+
+.member img{
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,.15);
+}
+
+.member h3{
+  font-size:14px;
+  margin:11px 0 4px;
+}
+
+.member p{
+  color:#8da1b8;
+  font-size:11px;
+  margin:0;
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq{
+  display:grid;
+  grid-template-columns:.75fr 1.25fr;
+  gap:30px;
+  align-items:start;
+}
+
+.faqList{
+  display:grid;
+  gap:9px;
+}
+
+.faqItem{
+  background:#fff;
+  border:1px solid #e2e8ef;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.faqQ{
+  width:100%;
+  border:0;
+  background:#fff;
+  text-align:left;
+  padding:18px 20px;
+  font-weight:800;
+  cursor:pointer;
+
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+
+  color:#152941;
+}
+
+.faqQ span:last-child{
+  font-size:18px;
+  color:#5475d1;
+  transition:.3s;
+}
+
+.faqA{
+  max-height:0;
+  overflow:hidden;
+  padding:0 20px;
+
+  color:#718399;
+  font-size:13px;
+  line-height:1.65;
+
+  transition:max-height .35s,padding .35s;
+}
+
+.faqItem.open .faqA{
+  max-height:150px;
+  padding:0 20px 18px;
+}
+
+.faqItem.open .faqQ span:last-child{
+  transform:rotate(45deg);
+}
+
+/* =========================================================
+   CTA + FOOTER
+========================================================= */
+
+.cta{
+  background:linear-gradient(110deg,#07172b,#102d4d);
+  color:#fff;
+  border-radius:28px;
+  padding:45px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+
+  overflow:hidden;
+  position:relative;
+}
+
+.cta:after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:rgba(118,87,255,.22);
+  right:-90px;
+  top:-100px;
+  filter:blur(10px);
+}
+
+.cta>*{
+  position:relative;
+  z-index:2;
+}
+
+.cta h2{
+  font-size:33px;
+  margin:0 0 8px;
+}
+
+.cta p{
+  margin:0;
+  color:#9db0c6;
+}
+
+.footer{
+  background:#04101e;
+  color:#8fa1b6;
+  padding:35px 0;
+  font-size:11px;
+}
+
+.footerIn{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,.68);
+  backdrop-filter:blur(8px);
+
+  z-index:200;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+}
+
+.modal.open{
+  display:flex;
+}
+
+.modalBox{
+  width:min(570px,100%);
+  background:#fff;
+  border-radius:24px;
+  padding:27px;
+  box-shadow:0 30px 100px #0008;
+  animation:pop .35s ease;
+}
+
+.darkModal{
+  background:#0a1b2f;
+  color:#fff;
+}
+
+.modalHead{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.close{
+  border:0;
+  background:none;
+  font-size:25px;
+  cursor:pointer;
+  color:#789;
+}
+
+.darkModal .close{
+  color:#9bb;
+}
+
+.modalBox h2{
+  margin:10px 0;
+  font-size:28px;
+}
+
+/* Sponsor modal */
+
+.sponsorModalBox{
+  width:min(520px,100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.sponsorModalBox:before{
+  content:"";
+  position:absolute;
+
+  width:190px;
+  height:190px;
+
+  border-radius:50%;
+
+  right:-80px;
+  top:-90px;
+
+  background:rgba(110,168,255,.12);
+}
+
+.sponsorModalBrand{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:18px;
+  position:relative;
+  z-index:2;
+}
+
+.sponsorModalLogo{
+  width:64px;
+  height:64px;
+  border-radius:17px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  flex-shrink:0;
+}
+
+.sponsorModalLogo.awsModalLogo{
+  background:#fff4df;
+}
+
+.sponsorModalLogo.awsModalLogo img{
+  width:52px;
+  height:auto;
+}
+
+.sponsorModalLogo.konfModalLogo{
+  background:#eaf3ff;
+}
+
+.sponsorModalLogo .konfIcon{
+  width:45px;
+  height:45px;
+  font-size:23px;
+}
+
+.sponsorRole{
+  display:inline-block;
+
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.12em;
+
+  padding:6px 9px;
+  border-radius:99px;
+
+  margin-top:2px;
+}
+
+.sponsorModalBox h2{
+  margin:5px 0 0;
+}
+
+.sponsorModalDesc{
+  color:#718399;
+  line-height:1.7;
+  font-size:13px;
+  margin:18px 0 0;
+
+  position:relative;
+  z-index:2;
+}
+
+/* Registration */
+
+.field{
+  margin:13px 0;
+}
+
+.field label{
+  font-size:10px;
+  font-weight:900;
+  color:#7d8da0;
+  display:block;
+  margin-bottom:6px;
+}
+
+.field input,
+.field select{
+  width:100%;
+  border:1px solid #dce4ec;
+  border-radius:10px;
+  padding:12px;
+  outline:none;
+  background:#fff;
+}
+
+.success{
+  display:none;
+  text-align:center;
+  padding:20px;
+}
+
+.check{
+  font-size:55px;
+  color:#24b47e;
+}
+
+@keyframes pop{
+  from{
+    opacity:0;
+    transform:scale(.86) translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:.7s;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+  .links{
+    display:none;
+  }
+
+  .menu{
+    display:block;
+    margin-left:auto;
+  }
+
+  .heroGrid,
+  .two,
+  .faq{
+    grid-template-columns:1fr;
+  }
+
+  .heroPhoto{
+    height:360px;
+  }
+
+  .sessionGrid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .speakers{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .team{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:700px){
+
+  .sponsorGrid{
+    grid-template-columns:1fr;
+    max-width:100%;
+  }
+}
+
+@media(max-width:560px){
+
+  section{
+    padding:65px 0;
+  }
+
+  .hero{
+    padding-top:105px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .personas,
+  .sessionGrid,
+  .speakers{
+    grid-template-columns:1fr;
+  }
+
+  .team{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .cta{
+    padding:30px;
+    display:block;
+  }
+
+  .cta .btn{
+    margin-top:18px;
+  }
+
+  .footerIn{
+    display:block;
+  }
+
+  .footerIn span{
+    display:block;
+    margin:7px 0;
+  }
+}
+
+@media(max-width:480px){
+
+  .sponsorCard{
+    grid-template-columns:58px 1fr 18px;
+    padding:18px;
+    gap:13px;
+    min-height:135px;
+  }
+
+  .sLogo{
+    width:58px;
+    height:58px;
+    border-radius:15px;
+  }
+
+  .awsLogo img{
+    width:48px;
+  }
+
+  .konfIcon{
+    width:40px;
+    height:40px;
+    font-size:21px;
+  }
+
+  .sponsorContent strong{
+    font-size:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav class="nav">
+  <div class="container navin">
+
+    <a class="logo" href="#">
+      <span class="logoMark">aws</span>
+      <span>Student Community Day</span>
+    </a>
+
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#sessions">Sessions</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#venue">Venue</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="#team">Team</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <button class="btn orange" onclick="openRegister()">
+      Register Now
+    </button>
+
+    <button
+      class="menu"
+      onclick="alert('On mobile, use the section links by scrolling through the page.')">
+      ☰
+    </button>
+
+  </div>
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+  <div class="container heroGrid">
+
+    <div>
+
+      <div class="kicker">
+        AWS Student Community Day
+      </div>
+
+      <h1>
+        Learn. <span>Build.</span><br>
+        Connect.
+      </h1>
+
+      <p>
+        Welcome to the AWS Student Community Day, a gathering aimed at exploring the latest trends, innovations, and best practices in the world of cloud computing offered by Amazon Web Services (AWS).
+
+Our Student Community Day brings together experts, enthusiasts, and learners from various domains to delve into the advancements, strategies, and real-world applications of AWS cloud services.
+
+Join us for insightful sessions, engaging discussions, hands-on workshops, and networking opportunities, all tailored to expand your knowledge and proficiency in leveraging AWS solutions.
+      </p>
+
+      <div class="heroActions">
+
+        <button
+          class="btn orange"
+          onclick="openRegister()">
+          Reserve My Seat →
+        </button>
+
+        <a
+          class="btn outline"
+          href="#sessions">
+          ▶ Explore Sessions
+        </a>
+
+      </div>
+
+      <div class="facts">
+
+        <span class="fact">
+          📅 27th September 2025
+        </span>
+
+        <span class="fact">
+          📍 IGDTUW, Delhi
+        </span>
+
+        <span class="fact">
+          ⏰ 9:00 AM – 5:00 PM
+        </span>
+
+        <span class="fact">
+          ☁ Beginner Friendly
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="heroPhoto">
+
+      <img
+        src="https://framerusercontent.com/images/Yy4PT5mQxQFY7KK1JeVUOsbN94.jpg"
+        alt="Students collaborating">
+
+      <div class="sticker s1">
+        Build your future ☁
+      </div>
+
+      <div class="sticker s2">
+        Real people. Real stories. ✦
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT / PERSONAS
+========================================================= -->
+
+<section id="about">
+
+  <div class="container">
+
+    <div class="head">
+
+      <div>
+        <div class="eyebrow">
+          Start with yourself
+        </div>
+
+        <h2>
+          Who is this for?
+        </h2>
+      </div>
+
+    </div>
+
+
+    <div class="personas">
+
+      <div
+        class="persona"
+        onclick="recommend('beginner')">
+
+        <div class="emoji">🌱</div>
+
+        <h3>
+          I'm new to Cloud
+        </h3>
+
+        <p>
+          Explore the basics, understand AWS,
+          and get started with cloud technologies.
+        </p>
+
+        <a>
+          Explore for Beginners →
+        </a>
+
+      </div>
+
+
+      <div
+        class="persona"
+        onclick="recommend('builder')">
+
+        <div class="emoji">💻</div>
+
+        <h3>
+          I want to Build
+        </h3>
+
+        <p>
+          Get hands-on with workshops,
+          build projects, and learn from experts.
+        </p>
+
+        <a>
+          Explore for Builders →
+        </a>
+
+      </div>
+
+
+      <div
+        class="persona"
+        onclick="recommend('career')">
+
+        <div class="emoji">💼</div>
+
+        <h3>
+          I'm Career Focused
+        </h3>
+
+        <p>
+          Learn about opportunities, network with
+          the community, and get career guidance.
+        </p>
+
+        <a>
+          Explore for Career Seekers →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SESSIONS
+========================================================= -->
+
+<section id="sessions" class="dark">
+
+  <div class="container">
+
+    <div class="head">
+
+      <div>
+
+        <div class="eyebrow">
+          Featured Sessions
+        </div>
+
+        <h2>
+          Find your next session.
+        </h2>
+
+      </div>
+
+      <p>
+        Filter by what you want from the day, then save sessions
+        to build a personal schedule.
+      </p>
+
+    </div>
+
+
+    <div class="sessionArea">
+
+      <div class="tabs">
+
+        <button
+          class="tab active"
+          onclick="filter('all',this)">
+          All
+        </button>
+
+        <button
+          class="tab"
+          onclick="filter('Beginner',this)">
+          Beginner
+        </button>
+
+        <button
+          class="tab"
+          onclick="filter('Hands-on',this)">
+          Hands-on
+        </button>
+
+        <button
+          class="tab"
+          onclick="filter('Career',this)">
+          Career
+        </button>
+
+      </div>
+
+
+      <div class="sessionGrid">
+
+        <article
+          class="session"
+          data-type="Beginner">
+
+          <div class="sessionImg">
+
+            <img
+              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80"
+              alt="Students collaborating">
+
+          </div>
+
+          <div class="sessionBody">
+
+            <span class="tag">
+              BEGINNER
+            </span>
+
+            <h3>
+              Introduction to AWS Cloud
+            </h3>
+
+            <p>
+              Cloud fundamentals without the jargon wall.
+            </p>
+
+            <div class="sessionFoot">
+
+              <span>
+                09:30 – 10:30
+              </span>
+
+              <button
+                class="save"
+                onclick="save(this,'Introduction to AWS Cloud')">
+                ♡
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="session"
+          data-type="Hands-on">
+
+          <div class="sessionImg">
+
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80"
+              alt="Technology workshop">
+
+          </div>
+
+          <div class="sessionBody">
+
+            <span class="tag">
+              HANDS-ON
+            </span>
+
+            <h3>
+              Build & Deploy a Web App
+            </h3>
+
+            <p>
+              Move from code to a cloud deployment.
+            </p>
+
+            <div class="sessionFoot">
+
+              <span>
+                11:00 – 13:00
+              </span>
+
+              <button
+                class="save"
+                onclick="save(this,'Build & Deploy a Web App')">
+                ♡
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="session"
+          data-type="Career">
+
+          <div class="sessionImg">
+
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=700&q=80"
+              alt="Career discussion">
+
+          </div>
+
+          <div class="sessionBody">
+
+            <span class="tag">
+              CAREER
+            </span>
+
+            <h3>
+              Career Opportunities in Cloud
+            </h3>
+
+            <p>
+              Connect learning with real career paths.
+            </p>
+
+            <div class="sessionFoot">
+
+              <span>
+                14:00 – 15:00
+              </span>
+
+              <button
+                class="save"
+                onclick="save(this,'Career Opportunities in Cloud')">
+                ♡
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="session"
+          data-type="Beginner">
+
+          <div class="sessionImg">
+
+            <img
+              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80"
+              alt="AI and technology">
+
+          </div>
+
+          <div class="sessionBody">
+
+            <span class="tag">
+              BEGINNER
+            </span>
+
+            <h3>
+              AWS for AI/ML
+            </h3>
+
+            <p>
+              See how cloud supports modern AI workflows.
+            </p>
+
+            <div class="sessionFoot">
+
+              <span>
+                15:30 – 17:00
+              </span>
+
+              <button
+                class="save"
+                onclick="save(this,'AWS for AI/ML')">
+                ♡
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SPEAKERS
+========================================================= -->
+
+<section id="speakers">
+
+  <div class="container">
+
+    <div class="head">
+
+      <div>
+
+        <div class="eyebrow">
+          Meet our speakers
+        </div>
+
+        <h2>
+          People behind the cloud.
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="speakers">
+
+
+      <div
+        class="speaker"
+        onclick="speaker(
+          'Jen Looper',
+          'Head of Academic Advocacy at AWS',
+          'Topic: Two Journeys, One Cloud: Career Pathways'
+        )">
+
+        <div class="speakerImg">
+          <img
+            src="https://media.konfhub.com/speakers/2024/January/08/1704690408857-Jen%20Looper%20Headshot.jpg"
+            alt="Jen Looper">
+        </div>
+
+        <h3>Jen Looper</h3>
+
+        <p>
+          Head of Academic Advocacy at AWS
+        </p>
+
+      </div>
+
+
+      <div
+        class="speaker"
+        onclick="speaker(
+          'Aditi Sawhney',
+          'Senior Digital Marketing Manager at AWS',
+          'Topic: Two Journeys, One Cloud: Career Pathways'
+        )">
+
+        <div class="speakerImg">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D5603AQEm_XZS93KHCw/profile-displayphoto-scale_200_200/B56Z4DBI0rGoAc-/0/1778167094285?e=2147483647&v=beta&t=bgXUFz0BecWVZlQ7WgOFFnBTX2T9zezKTtvV50oFtO0"
+            alt="Aditi Sawhney">
+        </div>
+
+        <h3>Aditi Sawhney</h3>
+
+        <p>
+          Senior Digital Marketing Manager at AWS
+        </p>
+
+      </div>
+
+
+      <div
+        class="speaker"
+        onclick="speaker(
+          'Dipali',
+          'Vice President of Data Engineering at Natwest Group & AWS Hero',
+          'Topic: Empowering Future Innovators: Crafting CI/CD pipeline with AWS'
+        )">
+
+        <div class="speakerImg">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D5603AQFKNU8Tmi4YsQ/profile-displayphoto-scale_200_200/B56Z3pxV6iIsAY-/0/1777743530039?e=2147483647&v=beta&t=a539lAfyI1t9AxwXCNakBQ4yTMvg2dRVetFvhyIrOjg"
+            alt="Dipali">
+        </div>
+
+        <h3>Dipali</h3>
+
+        <p>
+          Vice President of Data Engineering at Natwest Group & AWS Hero
+        </p>
+
+      </div>
+
+
+      <div
+        class="speaker"
+        onclick="speaker(
+          'Varsha Verma',
+          'Senior Cloud Ops Engineer at Accenture',
+          'Topic: Unlocking and Mastering the Cloud Basics'
+        )">
+
+        <div class="speakerImg">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMurFSNrfJsgENJy6q9a0F-VuJrodx5BGemjd0IqH9-A&s"
+            alt="Varsha Verma">
+        </div>
+
+        <h3>Varsha Verma</h3>
+
+        <p>
+          Senior Cloud Ops Engineer at Accenture
+        </p>
+
+      </div>
+
+
+      <div
+        class="speaker"
+        onclick="speaker(
+          'Kristine Howard',
+          'AWS Developer Relations and Advocacy team for Asia-Pacific',
+          'Topic: Generative AI - Asking for a friend'
+        )">
+
+        <div class="speakerImg">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjJwv-OVjKZ-hPnq7NdbpoQsFgM41R0Jklm8C9s2Z16Q&s"
+            alt="Kristine Howard">
+        </div>
+
+        <h3>Kristine Howard</h3>
+
+        <p>
+          AWS Developer Relations and Advocacy team for Asia-Pacific
+        </p>
+
+      </div>
+
+
+      <div
+        class="speaker"
+        onclick="speaker(
+          'Gargee Bhatnagar',
+          'Consultant at Capgemini and AWS Community Builder',
+          'Topic: AWS Security with Identity and Access Management'
+        )">
+
+        <div class="speakerImg">
+          <img
+            src="https://media.licdn.com/dms/image/v2/C4E03AQEWtIHYwcj26Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1637157480871?e=2147483647&v=beta&t=5jr21wMnC6ovDkDXCHOCg6IEpwHEiGb4yxCRJMpDzsk"
+            alt="Gargee Bhatnagar">
+        </div>
+
+        <h3>Gargee Bhatnagar</h3>
+
+        <p>
+          Consultant at Capgemini and AWS Community Builder
+        </p>
+
+      </div>
+
+
+      <div
+        class="speaker"
+        onclick="speaker(
+          'Rashmi Nambiar',
+          'Principal Marketing Manager, AWS',
+          'Topic: Making the right moves in a professional landscape'
+        )">
+
+        <div class="speakerImg">
+          <img
+            src="https://pbs.twimg.com/profile_images/1864151131372609536/fF4nmKlY_400x400.jpg"
+            alt="Rashmi Nambiar">
+        </div>
+
+        <h3>Rashmi Nambiar</h3>
+
+        <p>
+          Principal Marketing Manager, AWS
+        </p>
+
+      </div>
+
+
+      <div
+        class="speaker"
+        onclick="speaker(
+          'Payal Gupta',
+          'Cloud Engineer at Dremio',
+          'Topic: Re-Invent recap'
+        )">
+
+        <div class="speakerImg">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D5603AQHhr9jZLLHZDQ/profile-displayphoto-scale_200_200/B56Z_tTn36GUAc-/0/1786392772975?e=2147483647&v=beta&t=mc6r8U_-JhEMiIstBkcnJOjZRLtoTHmW685zRneoLLU"
+            alt="Payal Gupta">
+        </div>
+
+        <h3>Payal Gupta</h3>
+
+        <p>
+          Cloud Engineer at Dremio
+        </p>
+
+      </div>
+
+
+      <div
+        class="speaker"
+        onclick="speaker(
+          'Rajani',
+          'AWS Community Builder',
+          'Topic: Climbing the Cloud Ladder: Your AWS Career Guide'
+        )">
+
+        <div class="speakerImg">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDDF5uIQ_mP_-fPOP7jLFB5qZY45jzqjn-Nt7xTQqv0g&s"
+            alt="Rajani">
+        </div>
+
+        <h3>Rajani</h3>
+
+        <p>
+          AWS Community Builder
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SCHEDULE + VENUE
+========================================================= -->
+
+<section id="schedule" class="light">
+
+  <div class="container">
+
+    <div class="head">
+
+      <div>
+
+        <div class="eyebrow">
+          Event schedule
+        </div>
+
+        <h2>
+          A full day, beautifully organized.
+        </h2>
+
+      </div>
+
+      <p>
+        Clear times, clear purpose, fewer “where am I supposed to be?”
+        moments.
+      </p>
+
+    </div>
+
+
+    <div class="two">
+
+      <div class="panel">
+
+        <div class="timeline">
+
+          <div class="line">
+            <time>09:00 AM</time>
+
+            <div>
+              <strong>
+                Registration & Networking
+              </strong>
+
+              <span>
+                Meet fellow students and community members.
+              </span>
+            </div>
+
+            <i class="dot"></i>
+          </div>
+
+
+          <div class="line">
+            <time>09:30 AM</time>
+
+            <div>
+              <strong>
+                Inauguration & Welcome Note
+              </strong>
+
+              <span>
+                Start the day together.
+              </span>
+            </div>
+
+            <i class="dot"></i>
+          </div>
+
+
+          <div class="line">
+            <time>10:00 AM</time>
+
+            <div>
+              <strong>
+                Keynote Session
+              </strong>
+
+              <span>
+                The cloud landscape and student opportunities.
+              </span>
+            </div>
+
+            <i class="dot"></i>
+          </div>
+
+
+          <div class="line">
+            <time>11:00 AM</time>
+
+            <div>
+              <strong>
+                Technical Workshops
+              </strong>
+
+              <span>
+                Learn by doing.
+              </span>
+            </div>
+
+            <i class="dot"></i>
+          </div>
+
+
+          <div class="line">
+            <time>01:00 PM</time>
+
+            <div>
+              <strong>
+                Lunch Break
+              </strong>
+
+              <span>
+                Recharge and connect.
+              </span>
+            </div>
+
+            <i class="dot"></i>
+          </div>
+
+
+          <div class="line">
+            <time>02:00 PM</time>
+
+            <div>
+              <strong>
+                Career Session & Panel
+              </strong>
+
+              <span>
+                Ask questions about the road ahead.
+              </span>
+            </div>
+
+            <i class="dot"></i>
+          </div>
+
+
+          <div class="line">
+            <time>05:00 PM</time>
+
+            <div>
+              <strong>
+                Closing & Certificates
+              </strong>
+
+              <span>
+                Resources, feedback, and next steps.
+              </span>
+            </div>
+
+            <i class="dot"></i>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="panel" id="venue">
+
+        <div class="eyebrow">
+          Venue
+        </div>
+
+        <h2 style="margin:8px 0">
+          IGDTUW, Delhi
+        </h2>
+
+        <p
+          style="
+            color:#718399;
+            font-size:13px;
+            line-height:1.6;
+          ">
+          Indira Gandhi Delhi Technical University for Women,
+          Kashmere Gate, Delhi.
+        </p>
+
+        <button
+          class="btn orange"
+          onclick="
+            window.open(
+              'https://maps.google.com/?q=IGDTUW+Delhi',
+              '_blank'
+            )
+          ">
+          Get Directions ↗
+        </button>
+
+        <div class="venueImg">
+
+          <img
+            src="https://caderaedu.del1.vultrobjects.com/colleges/2d15a2c3-7ca8-4562-8a28-36fb970a6a46.jpg"
+            alt="University campus">
+
+        </div>
+
+        <div class="mapFake">
+          <span class="pin">📍</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SPONSORS
+========================================================= -->
+
+<section id="sponsors" class="sponsorSection">
+
+  <div class="container">
+
+    <div class="head">
+
+      <div>
+
+        <div class="eyebrow">
+          Our ecosystem
+        </div>
+
+        <h2>
+          Powered by people<br>
+          who build what's next.
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="sponsorGrid">
+
+
+      <!-- AWS TITLE SPONSOR -->
+
+      <div
+        class="sponsorCard featured"
+        onclick="
+          sponsorInfo(
+            'AWS',
+            'Title Sponsor',
+            'Amazon Web Services supports the student community with cloud infrastructure, developer tools and learning resources.',
+            'aws'
+          )
+        ">
+
+        <div class="sLogo awsLogo">
+
+          <img
+            src="https://d0.awsstatic.com/logos/powered-by-aws.png"
+            alt="Amazon Web Services logo">
+
+        </div>
+
+
+        <div class="sponsorContent">
+
+          <span class="sponsorTag titleTag">
+            TITLE SPONSOR
+          </span>
+
+          <strong>
+            Amazon Web Services
+          </strong>
+
+          <small>
+            Cloud · Developer Tools
+          </small>
+
+        </div>
+
+
+        <b>
+          ↗
+        </b>
+
+      </div>
+
+
+      <!-- KONFHUB TICKETING SPONSOR -->
+
+      <div
+        class="sponsorCard konfhubCard"
+        onclick="
+          sponsorInfo(
+            'KonfHub',
+            'Ticketing Sponsor',
+            'KonfHub is an AI-powered event platform supporting seamless event management, ticketing and attendee engagement.',
+            'konfhub'
+          )
+        ">
+
+        <div class="sLogo konfhubLogo">
+
+          <span class="konfIcon">
+            K
+          </span>
+
+        </div>
+
+
+        <div class="sponsorContent">
+
+          <span class="sponsorTag ticketTag">
+            TICKETING SPONSOR
+          </span>
+
+          <strong>
+            KonfHub
+          </strong>
+
+          <small>
+            Event Management · Ticketing
+          </small>
+
+        </div>
+
+
+        <b>
+          ↗
+        </b>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     TEAM
+========================================================= -->
+
+<section id="team" class="dark">
+
+  <div class="container">
+
+    <div class="head">
+
+      <div>
+
+        <div class="eyebrow">
+          Our team
+        </div>
+
+        <h2>
+          The people behind the event.
+        </h2>
+
+      </div>
+    </div>
+    <div class="team">
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Arushi Garg
+        </h3>
+        <p>
+          Captain
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Soumya
+        </h3>
+        <p>
+          Core
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Priyanka
+        </h3>
+        <p>
+          Core
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          sakshi
+        </h3>
+        <p>
+          Core
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Shreya
+        </h3>
+        <p>
+          Core
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Lavanaya
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Charu
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Jyoti
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Garima
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Ananya
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Aishwarya
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          shradha
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Gayatri
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Anamika
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          arushree
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Tvesha
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Anjali
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Aarushi
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Aniketa
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Bhavya
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Jhanvi
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Sania
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Saloni
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Tanisha
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Sneha
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Avni
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+      <div class="member">
+        <img
+          src="https://randomuser.me/api/portraits/women/49.jpg"
+          alt="Ananya Sharma">
+        <h3>
+          Payal
+        </h3>
+        <p>
+          Volunteer
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     FAQ
+========================================================= -->
+
+<section id="faq">
+
+  <div class="container">
+
+    <div class="faq">
+
+      <div>
+
+        <div class="eyebrow">
+          Frequently Asked Questions
+        </div>
+
+        <h2
+          style="
+            font-size:39px;
+            margin:8px 0 12px;
+          ">
+          Need to know?<br>
+          We've got you.
+        </h2>
+
+        <p
+          style="
+            color:#718399;
+            line-height:1.65;
+            font-size:13px;
+          ">
+          The FAQ is placed where students naturally look for
+          logistics, not hidden in a footer maze.
+        </p>
+
+        <button
+          class="btn orange"
+          onclick="openRegister()">
+          Register Now →
+        </button>
+
+      </div>
+
+
+      <div class="faqList">
+
+
+        <div class="faqItem">
+
+          <button
+            class="faqQ"
+            onclick="faq(this)">
+
+            Is there a registration fee?
+
+            <span>+</span>
+
+          </button>
+
+          <div class="faqA">
+            No payment is required for this prototype event flow.
+            Registration simply reserves your seat.
+          </div>
+
+        </div>
+
+
+        <div class="faqItem">
+
+          <button
+            class="faqQ"
+            onclick="faq(this)">
+
+            Who can attend the event?
+
+            <span>+</span>
+
+          </button>
+
+          <div class="faqA">
+            Students interested in AWS, cloud, development,
+            AI/ML, cybersecurity, or technology careers can attend.
+          </div>
+
+        </div>
+
+
+        <div class="faqItem">
+
+          <button
+            class="faqQ"
+            onclick="faq(this)">
+
+            Will there be certificates?
+
+            <span>+</span>
+
+          </button>
+
+          <div class="faqA">
+            Certificate distribution is shown as part of the
+            closing flow in this redesign concept.
+          </div>
+
+        </div>
+
+
+        <div class="faqItem">
+
+          <button
+            class="faqQ"
+            onclick="faq(this)">
+
+            Can I attend only specific sessions?
+
+            <span>+</span>
+
+          </button>
+
+          <div class="faqA">
+            Yes. The session planner lets students save the
+            sessions they care about and build a personal schedule.
+          </div>
+
+        </div>
+
+
+        <div class="faqItem">
+
+          <button
+            class="faqQ"
+            onclick="faq(this)">
+
+            What should I bring?
+
+            <span>+</span>
+
+          </button>
+
+          <div class="faqA">
+            Bring your college ID, a laptop and charger for
+            hands-on sessions, and an open mind for networking.
+          </div>
+
+        </div>
+
+
+        <div class="faqItem">
+
+          <button
+            class="faqQ"
+            onclick="faq(this)">
+
+            Is food provided?
+
+            <span>+</span>
+
+          </button>
+
+          <div class="faqA">
+            Food and refreshment details can be displayed here
+            by the event organizers before registration closes.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="cta">
+
+      <div>
+
+        <h2>
+          Ready to build your cloud path?
+        </h2>
+
+        <p>
+          Reserve a seat, save your sessions, and arrive knowing
+          exactly what you want from the day.
+        </p>
+
+      </div>
+
+      <button
+        class="btn orange"
+        onclick="openRegister()">
+        Reserve My Seat →
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+  <div class="container footerIn">
+
+    <span>
+      AWS Student Community Day · Student-first redesign concept
+    </span>
+
+    <span>
+      Learn · Build · Connect · © Prototype
+    </span>
+
+  </div>
+
+</footer>
+
+
+<!-- =========================================================
+     REGISTRATION MODAL
+========================================================= -->
+
+<div
+  class="modal"
+  id="registerModal">
+
+  <div class="modalBox darkModal">
+
+    <div class="modalHead">
+
+      <div>
+
+        <div class="eyebrow">
+          Registration
+        </div>
+
+        <h2>
+          Save your seat.
+        </h2>
+
+      </div>
+
+      <button
+        class="close"
+        onclick="closeRegister()">
+        ×
+      </button>
+
+    </div>
+
+
+    <div id="regForm">
+
+      <div class="field">
+
+        <label>
+          FULL NAME
+        </label>
+
+        <input
+          id="name"
+          placeholder="Your name">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          COLLEGE EMAIL
+        </label>
+
+        <input
+          id="email"
+          type="email"
+          placeholder="you@college.ac.in">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          YEAR
+        </label>
+
+        <select id="year">
+
+          <option>
+            Select Year
+          </option>
+
+          <option>1st Year</option>
+          <option>2nd Year</option>
+          <option>3rd Year</option>
+          <option>4th Year</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          BRANCH
+        </label>
+
+        <select id="branch">
+
+          <option>
+            Select Branch
+          </option>
+
+          <option>CSE</option>
+          <option>AI/ML</option>
+          <option>IT</option>
+          <option>ECE</option>
+          <option>Other</option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        class="btn orange"
+        style="width:100%;margin-top:8px"
+        onclick="confirmRegistration()">
+
+        Complete Registration →
+
+      </button>
+
+    </div>
+
+
+    <div
+      class="success"
+      id="success">
+
+      <div class="check">
+        ✓
+      </div>
+
+      <h2>
+        Registration Successful!
+      </h2>
+
+      <p style="color:#9eb0c5">
+        You're all set for AWS Student Community Day.
+        A confirmation email would be sent to your registered address.
+      </p>
+
+      <button
+        class="btn orange"
+        onclick="
+          closeRegister();
+          document
+            .querySelector('#sessions')
+            .scrollIntoView();
+        ">
+
+        Build My Day
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     SPEAKER MODAL
+========================================================= -->
+
+<div
+  class="modal"
+  id="speakerModal">
+
+  <div class="modalBox">
+
+    <div class="modalHead">
+
+      <div>
+
+        <div class="eyebrow">
+          Speaker
+        </div>
+
+        <h2 id="spName"></h2>
+
+      </div>
+
+      <button
+        class="close"
+        onclick="closeSpeaker()">
+        ×
+      </button>
+
+    </div>
+
+    <p
+      id="spRole"
+      style="
+        font-weight:800;
+        color:#5475d1;
+      ">
+    </p>
+
+    <p
+      id="spBio"
+      style="
+        color:#718399;
+        line-height:1.7;
+      ">
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     SPONSOR MODAL
+========================================================= -->
+
+<div
+  class="modal"
+  id="sponsorModal">
+
+  <div class="modalBox sponsorModalBox">
+
+    <div class="modalHead">
+
+      <div class="sponsorModalBrand">
+
+        <div
+          class="sponsorModalLogo"
+          id="sponsorModalLogo">
+        </div>
+
+        <div>
+
+          <span
+            class="sponsorRole"
+            id="sponsorModalRole">
+          </span>
+
+          <h2 id="sponsorName"></h2>
+
+        </div>
+
+      </div>
+
+      <button
+        class="close"
+        onclick="closeSponsor()">
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      class="eyebrow"
+      style="margin-top:3px;">
+      Sponsor
+    </div>
+
+    <p
+      id="sponsorBio"
+      class="sponsorModalDesc">
+    </p>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   REGISTRATION
+========================================================= */
+
+let saved = [];
+
+function openRegister(){
+  document
+    .getElementById('registerModal')
+    .classList.add('open');
+}
+
+function closeRegister(){
+  document
+    .getElementById('registerModal')
+    .classList.remove('open');
+}
+
+function confirmRegistration(){
+
+  const name =
+    document
+      .getElementById('name')
+      .value
+      .trim();
+
+  const email =
+    document
+      .getElementById('email')
+      .value
+      .trim();
+
+  if(!name || !email){
+
+    alert(
+      'Please enter your name and email.'
+    );
+
+    return;
+  }
+
+  document
+    .getElementById('regForm')
+    .style.display = 'none';
+
+  document
+    .getElementById('success')
+    .style.display = 'block';
+}
+
+
+/* =========================================================
+   SPEAKER MODAL
+========================================================= */
+
+function speaker(name, role, bio){
+
+  document
+    .getElementById('spName')
+    .textContent = name;
+
+  document
+    .getElementById('spRole')
+    .textContent = role;
+
+  document
+    .getElementById('spBio')
+    .textContent = bio;
+
+  document
+    .getElementById('speakerModal')
+    .classList.add('open');
+}
+
+function closeSpeaker(){
+
+  document
+    .getElementById('speakerModal')
+    .classList.remove('open');
+}
+
+
+/* =========================================================
+   SPONSOR MODAL
+========================================================= */
+
+function sponsorInfo(name, role, bio, type){
+
+  const modal =
+    document.getElementById('sponsorModal');
+
+  const logo =
+    document.getElementById('sponsorModalLogo');
+
+  const roleElement =
+    document.getElementById('sponsorModalRole');
+
+
+  document
+    .getElementById('sponsorName')
+    .textContent = name;
+
+  document
+    .getElementById('sponsorBio')
+    .textContent = bio;
+
+  roleElement.textContent = role;
+
+
+  if(type === 'aws'){
+
+    logo.className =
+      'sponsorModalLogo awsModalLogo';
+
+    logo.innerHTML = `
+      <img
+        src="https://d0.awsstatic.com/logos/powered-by-aws.png"
+        alt="Amazon Web Services logo">
+    `;
+
+    roleElement.style.color =
+      '#9a5b00';
+
+    roleElement.style.background =
+      '#fff1d7';
+
+    roleElement.style.border =
+      '1px solid #ffd38b';
+
+  }
+
+  else{
+
+    logo.className =
+      'sponsorModalLogo konfModalLogo';
+
+    logo.innerHTML = `
+      <span class="konfIcon">
+        K
+      </span>
+    `;
+
+    roleElement.style.color =
+      '#1557a8';
+
+    roleElement.style.background =
+      '#e9f2ff';
+
+    roleElement.style.border =
+      '1px solid #bcd7ff';
+  }
+
+
+  modal.classList.add('open');
+}
+
+
+function closeSponsor(){
+
+  document
+    .getElementById('sponsorModal')
+    .classList.remove('open');
+}
+
+
+/* =========================================================
+   SESSION FILTER
+========================================================= */
+
+function filter(type, btn){
+
+  document
+    .querySelectorAll('.tab')
+    .forEach(tab =>
+      tab.classList.remove('active')
+    );
+
+  btn.classList.add('active');
+
+
+  document
+    .querySelectorAll('.session')
+    .forEach(session => {
+
+      session.style.display =
+        (
+          type === 'all' ||
+          session.dataset.type === type
+        )
+        ? 'block'
+        : 'none';
+
+    });
+}
+
+
+/* =========================================================
+   SAVE SESSION
+========================================================= */
+
+function save(btn, title){
+
+  if(saved.includes(title)){
+
+    saved =
+      saved.filter(
+        item => item !== title
+      );
+
+    btn.classList.remove('saved');
+    btn.textContent = '♡';
+
+  }
+
+  else{
+
+    saved.push(title);
+
+    btn.classList.add('saved');
+    btn.textContent = '✓';
+
+  }
+}
+
+
+/* =========================================================
+   PERSONA RECOMMENDATIONS
+========================================================= */
+
+function recommend(type){
+
+  const labels = {
+
+    beginner:
+      'Recommended: Introduction to AWS Cloud + AWS for AI/ML',
+
+    builder:
+      'Recommended: Build & Deploy a Web App + hands-on sessions',
+
+    career:
+      'Recommended: Career Opportunities in Cloud + community sessions'
+
+  };
+
+
+  alert(
+    labels[type] +
+    '\n\nYour next step: scroll to Featured Sessions and save what fits your goal.'
+  );
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+function faq(btn){
+
+  const item =
+    btn.parentElement;
+
+  document
+    .querySelectorAll('.faqItem')
+    .forEach(element => {
+
+      if(element !== item){
+        element.classList.remove('open');
+      }
+
+    });
+
+  item.classList.toggle('open');
+}
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+window.addEventListener(
+  'keydown',
+  event => {
+
+    if(event.key === 'Escape'){
+
+      closeRegister();
+      closeSpeaker();
+      closeSponsor();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   CLICK OUTSIDE MODAL TO CLOSE
+========================================================= */
+
+document
+  .querySelectorAll('.modal')
+  .forEach(modal => {
+
+    modal.addEventListener(
+      'click',
+      event => {
+
+        if(event.target === modal){
+
+          modal.classList.remove('open');
+
+        }
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+  new IntersectionObserver(
+
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add('show');
+
+        }
+
+      });
+
+    },
+
+    {
+      threshold:.12
+    }
+
+  );
+
+
+document
+  .querySelectorAll(
+    'section .container,.panel,.speaker,.persona,.sponsorCard'
+  )
+  .forEach(element => {
+
+    element.classList.add('reveal');
+
+    observer.observe(element);
+
+  });
+
+</script>
+
+</body>
+</html>
