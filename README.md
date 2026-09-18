@@ -40,16 +40,7 @@ The website uses a modern AWS-inspired visual language with:
 - Responsive layouts
 - Clear visual hierarchy
 
-##  Project Structure
-
-```text
-aws-student-community-day/
-│
-├── index.html
-└── README.md
-
-
-Author
+## Author
 
 Tulsi Kumari
 
