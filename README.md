@@ -1,26 +1,25 @@
-# AWS Student Community Day 🚀
+# AWS Student Community Day 
 
 A modern, interactive event website designed for **AWS Student Community Day at IGDTUW, Delhi**.
 
 The website focuses on creating a smooth and engaging experience for students to explore the event, discover sessions and speakers, view the schedule, learn about the venue, and register.
 
-## ✨ Features
+## Features
 
-- 🎯 Interactive event landing page
-- ☁️ AWS-focused student community experience
-- 👩‍💻 Speaker showcase with interactive speaker cards
-- 📚 Session explorer with category filters
-- ⭐ Save sessions for later
-- 🗓️ Detailed event schedule
-- 📍 Venue information
-- 🤝 Sponsor showcase
-- ❓ Interactive FAQ section
-- 📝 Registration modal
-- 🎨 Responsive and modern UI
-- ✨ Scroll reveal animations and micro-interactions
-- 📱 Mobile-friendly design
-
-## 🛠️ Tech Stack
+-  Interactive event landing page
+-  AWS-focused student community experience
+-  Speaker showcase with interactive speaker cards
+-  Session explorer with category filters
+-  Save sessions for later
+-  Detailed event schedule
+-  Venue information
+-  Sponsor showcase
+-  Interactive FAQ section
+-  Registration modal
+-  Responsive and modern UI
+-  Scroll reveal animations and micro-interactions
+-  Mobile-friendly design
+##  Tech Stack
 
 - HTML5
 - CSS3
@@ -29,7 +28,7 @@ The website focuses on creating a smooth and engaging experience for students to
 - Chart.js
 - Google Fonts
 
-## 🎨 Design
+##  Design
 
 The website uses a modern AWS-inspired visual language with:
 
@@ -41,7 +40,7 @@ The website uses a modern AWS-inspired visual language with:
 - Responsive layouts
 - Clear visual hierarchy
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 aws-student-community-day/
